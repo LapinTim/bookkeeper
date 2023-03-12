@@ -41,3 +41,7 @@ class MemoryRepository(AbstractRepository[T]):
 
     def delete(self, pk: int) -> None:
         self._container.pop(pk)
+
+    @classmethod
+    def repository_factory(cls, models):
+        return {m: cls() for m in models}
